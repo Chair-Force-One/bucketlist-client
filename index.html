@@ -68,5 +68,21 @@
 
       <br />
       <br />
+
+      <div id="adventure-control-buttons" class="container">
+        <button id="show-create-button" class="btn btn-danger"> Add Item </button>
+        <button id="get-adventures-button" class="btn btn-danger"> Show All </button>
+      </div>
+
+      <div id="add-adventure-box" class="container">
+        <form id="add-adventure-form" class="form-inline">
+          <legend> Add Item to List </legend>
+          <input id="add-title" name="adventure[title]" required placeholder="Title" class="form-control"/>
+          <input id="add-Location" name="adventure[location]" required placeholder="Location" class="form-control"/>
+          <input id="add-Notes" name="adventure[notes]" required placeholder="Notes" class="form-control"/>
+          <button type="submit"  name="sign-up" class='btn btn-danger'> Create </button>
+          <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+      </div>
     </body>
 </html>

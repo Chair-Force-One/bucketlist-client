@@ -39,10 +39,20 @@ const addEventListeners = () => {
     $('#change-password-box').hide()
     $('#change-password-form').trigger('reset')
   })
+
+  $('#show-create-button').on('click', () => {
+    $('#add-adventure-box').show()
+  })
+  $('#cancel-create-button').on('click', () => {
+    $('#add-adventure-box').hide()
+    $('#add-adventure-form').trigger('reset')
+  })
 }
 const setDefaultState = () => {
   $('#authenticated-buttons').hide()
   $('#sign-in-box').hide()
   $('#sign-up-box').hide()
   $('#change-password-box').hide()
+  $('#adventure-control-buttons').hide()
+  $('#add-adventure-box').hide()
 }
