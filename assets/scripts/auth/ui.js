@@ -20,6 +20,10 @@ const signInSuccess = (response) => {
   $('#user-message').html(userHTML)
   store.user = response.user
   $('#sign-in-form').trigger('reset')
+  $('#sign-in-box').hide()
+  $('#sign-up-box').hide()
+  $('#unauthenticated-buttons').hide()
+  $('#authenticated-buttons').show()
 }
 
 const changePasswordSuccess = (response) => {
@@ -35,6 +39,9 @@ const signOutSuccess = (response) => {
   $('#user-message').html(`<h5> Signed Out </h5>`)
   // store.user = null // remove all stored data on logout
   // store.currentGame = null
+  $('#unauthenticated-buttons').show()
+  $('#authenticated-buttons').hide()
+  $('#ch-pwd-box').hide()
 }
 
 // OPTIMIZE: Create failure functions for each possible state rather than a blanket case
