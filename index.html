@@ -15,7 +15,7 @@
       <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bucket List</a> <!-- TODO: Remove link https://github.com/ckempema/project-2-client-->
+            <a class="navbar-brand" href="#">Bucket List</a>
           </div>
           <span id="user-message"> </span>
           <div class="float-right">
@@ -53,7 +53,6 @@
           <button type="submit"  name="sign-up" class='btn btn-danger'> Sign Up </button>
           <button id="cancel-sign-up-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
-
       </div>
 
       <div id="change-password-box" class="container">
@@ -76,13 +75,15 @@
 
       <div id="add-adventure-box" class="container">
         <form id="add-adventure-form" class="form-inline">
-          <legend> Add Item to List </legend>
-          <input id="add-title" name="adventure[title]" required placeholder="Title" class="form-control"/>
-          <input id="add-Location" name="adventure[location]" required placeholder="Location" class="form-control"/>
-          <input id="add-Notes" name="adventure[notes]" required placeholder="Notes" class="form-control"/>
-          <button type="submit"  name="sign-up" class='btn btn-danger'> Create </button>
+          <legend> Add Adventure </legend>
+          <input id="create-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
+          <input id="create-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
+          <input id="create-location" name="adventure[note]" type="text" placeholder="Notes" class="form-control"/>
+          <button type="submit"  name="create" class='btn btn-danger'> Create </button>
           <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
       </div>
+
+      <div id="show-adventures-section" > </div>
     </body>
 </html>
