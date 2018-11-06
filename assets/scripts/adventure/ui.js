@@ -16,6 +16,8 @@ const createAdventureSuccess = (response) => {
 const showAdventuresSuccess = (response) => {
   const adventuresHTML = adventuresTemplate({adventures: response.adventures})
   $('#show-adventures-section').html(adventuresHTML)
+  console.log(response.adventures)
+  return response.adventures
 }
 
 const adventureFailure = (response) => {
