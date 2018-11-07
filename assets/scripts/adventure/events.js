@@ -25,7 +25,11 @@ const onClickEdit = (id) => {
 }
 
 const onClickDelete = (id) => {
+  event.preventDefault()
   console.log(id)
+  api.deleteAdventure(id)
+    .then(() => onShowAdventures(event))
+    .catch(ui.adventureDeleteFailure)
 }
 
 const onShowAdventures = () => {
