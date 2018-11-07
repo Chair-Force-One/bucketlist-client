@@ -85,6 +85,17 @@
         </form>
       </div>
 
+      <div id="update-adventure-box" class="container">
+        <form id="update-adventure-form" class="form-group row">
+          <legend> Update Adventure </legend>
+          <input id="update-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
+          <input id="update-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
+          <input id="update-location" name="adventure[notes]" type="text" placeholder="Notes" class="form-control"/>
+          <button type="submit"  name="update" class='btn btn-danger'> update </button>
+          <button id="cancel-update-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+      </div>
+
       <div id="show-adventures-section" > </div>
     </body>
 </html>
