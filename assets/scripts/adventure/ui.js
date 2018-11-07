@@ -36,9 +36,19 @@ const adventureDeleteFailure = (response) => {
   $('#user-message').html(output)
 }
 
+const adventureUpdateFailure = (response) => {
+  const output = (`
+    <h3>ERROR: Failed to update Adventure</h3>
+    `)
+  $('#user-message').html(output)
+}
+
+// console.log($('span[button id="'adventure._id-edit'"]')
+
 module.exports = {
   createAdventureSuccess,
   showAdventuresSuccess,
   adventureFailure,
-  adventureDeleteFailure
+  adventureDeleteFailure,
+  adventureUpdateFailure
 }

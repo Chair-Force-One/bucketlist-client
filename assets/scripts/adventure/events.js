@@ -2,6 +2,7 @@
 
 const getFormFields = require('../../../lib/get-form-fields.js')
 
+const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
@@ -21,7 +22,34 @@ const onClickCheckbox = (id) => {
 }
 
 const onClickEdit = (id) => {
-  console.log(id)
+  event.preventDefault()
+  store.updateAdventureId = id
+  console.log(store.updateAdventureId)
+
+  $('#update-adventure-box').show()
+
+// current adventure being updated
+}
+
+const onUpdateAdventure = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+
+  // current adventure being updated
+  //  console.log(store.updateid)
+  const updatedAdventure = {
+    'adventure': {
+      'title': data.adventure.title,
+      'place': data.adventure.place,
+      'notes': data.adventure.notes,
+      'checked': data.adventure.checked
+    }
+  }
+  console.log(updatedAdventure)
+  api.updatedAdventure(updatedAdventure)
+    .then(console.log('updated adventure ' + store.updateAdventureId))
+    .catch(ui.adventureUpdateFailure)
 }
 
 const onClickDelete = (id) => {
@@ -53,5 +81,6 @@ const onShowAdventures = () => {
 
 module.exports = {
   onCreateAdventure,
-  onShowAdventures
+  onShowAdventures,
+  onUpdateAdventure
 }

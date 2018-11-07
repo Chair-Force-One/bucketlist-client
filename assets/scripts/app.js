@@ -22,6 +22,8 @@ const addEventListeners = () => {
   $('#add-adventure-form').on('submit', adventureEvents.onCreateAdventure)
   $('#get-adventures-button').on('click', adventureEvents.onShowAdventures)
 
+  $('#update-adventure-form').on('submit', adventureEvents.onUpdateAdventure)
+
   $('#show-sign-in-button').on('click', () => {
     $('#sign-in-box').show()
   })
@@ -60,4 +62,5 @@ const setDefaultState = () => {
   $('#change-password-box').hide()
   $('#adventure-control-buttons').hide()
   $('#add-adventure-box').hide()
+  $('#update-adventure-box').hide()
 }
