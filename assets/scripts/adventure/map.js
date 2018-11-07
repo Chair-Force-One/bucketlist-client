@@ -3,7 +3,7 @@ const loadGoogleMapsApi = require('load-google-maps-api')
 const store = require('./../store.js')
 
 const initOptions = {
-  key: 'AIzaSyCwyN8WOioGkLhjSerpMlRBR03dmdVOjvo'
+  key: //PLACE KEY HERE
 }
 
 const initMap = (googleMaps) => {
