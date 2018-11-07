@@ -5,15 +5,22 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+
 const authEvents = require('./auth/events.js')
 const adventureEvents = require('./adventure/events.js')
+const mapsFunctions = require('./adventure/map.js')
 
 $(() => {
   addEventListeners()
   setDefaultState()
+  mapsFunctions.setupMap()
 })
 
 const addEventListeners = () => {
+  $('#show-markers-button').on('click', () => {
+    mapsFunctions.codeAddress('200 Portland Street', 'A', 'Title')
+  })
+
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
@@ -67,4 +74,5 @@ const setDefaultState = () => {
   $('#adventure-control-buttons').hide()
   $('#add-adventure-box').hide()
   $('#update-adventure-box').hide()
+  $('#map').hide()
 }

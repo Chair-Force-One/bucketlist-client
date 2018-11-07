@@ -1,6 +1,6 @@
 'use strict'
 
-const store = require('../store.js')
+// const store = require('../store.js')
 const adventuresTemplate = require('../templates/adventures.handlebars')
 
 const createAdventureSuccess = (response) => {
