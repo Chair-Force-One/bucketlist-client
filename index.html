@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
+
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
       <!-- Do not add `script` tags-->
@@ -15,7 +16,7 @@
       <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Bucket List</a> <!-- TODO: Remove link https://github.com/ckempema/project-2-client-->
+            <a class="navbar-brand" href="#">Bucket List</a>
           </div>
           <span id="user-message"> </span>
           <div class="float-right">
@@ -44,7 +45,7 @@
 
       </div>
 
-      <div id="sign-up-box" class="container">
+      <div id="sign-up-box" class="form-inline">
         <form id="sign-up-form" class="form-inline">
           <legend> Create User </legend>
           <input id="sign-up-email" name="credentials[email]" type="email" required placeholder="Email" class="form-control"/>
@@ -53,10 +54,9 @@
           <button type="submit"  name="sign-up" class='btn btn-danger'> Sign Up </button>
           <button id="cancel-sign-up-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
-
       </div>
 
-      <div id="change-password-box" class="container">
+      <div id="change-password-box" class="form-inline">
         <form id="change-password-form" class="form-inline">
           <legend> Change Password </legend>
           <input id="change-pwd-old" name="passwords[old]" type="password" required placeholder="Old Password" class="form-control"/>
@@ -68,5 +68,23 @@
 
       <br />
       <br />
+
+      <div id="adventure-control-buttons" class="container">
+        <button id="show-create-button" class="btn btn-danger"> Add Item </button>
+        <button id="get-adventures-button" class="btn btn-danger"> Show All </button>
+      </div>
+
+      <div id="add-adventure-box" class="container">
+        <form id="add-adventure-form" class="form-group row">
+          <legend> Add Adventure </legend>
+          <input id="create-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
+          <input id="create-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
+          <input id="create-location" name="adventure[notes]" type="text" placeholder="Notes" class="form-control"/>
+          <button type="submit"  name="create" class='btn btn-danger'> Create </button>
+          <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+      </div>
+
+      <div id="show-adventures-section" > </div>
     </body>
 </html>

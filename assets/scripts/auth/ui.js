@@ -24,6 +24,7 @@ const signInSuccess = (response) => {
   $('#sign-up-box').hide()
   $('#unauthenticated-buttons').hide()
   $('#authenticated-buttons').show()
+  $('#adventure-control-buttons').show()
 }
 
 const changePasswordSuccess = (response) => {
