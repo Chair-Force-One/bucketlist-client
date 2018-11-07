@@ -24,7 +24,17 @@ const showAdventures = (data) => {
   })
 }
 
+const deleteAdventure = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/adventures/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
 module.exports = {
   createAdventure,
-  showAdventures
+  showAdventures,
+  deleteAdventure
 }

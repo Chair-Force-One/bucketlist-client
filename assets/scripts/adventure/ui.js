@@ -28,8 +28,17 @@ const adventureFailure = (response) => {
   $('#user-message').html(output)
 }
 
+const adventureDeleteFailure = (response) => {
+  $('#user-message').html('')
+  const output = (`
+    <h3>ERROR: Failed to delete Adventure</h3>
+    `)
+  $('#user-message').html(output)
+}
+
 module.exports = {
   createAdventureSuccess,
   showAdventuresSuccess,
-  adventureFailure
+  adventureFailure,
+  adventureDeleteFailure
 }
