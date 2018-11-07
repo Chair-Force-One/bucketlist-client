@@ -20,6 +20,15 @@ const showAdventuresSuccess = (response) => {
   return response.adventures
 }
 
+const adventureUpdateSuccess = (response) => {
+  const output = (`
+    <h3>Update Adventure Success</h3>
+    `)
+  $('#user-message').html(output)
+  $('#update-adventure-form').trigger('reset')
+  $('#update-adventure-box').hide()
+}
+
 const adventureFailure = (response) => {
   $('#user-message').html('')
   const output = (`
@@ -41,6 +50,7 @@ const adventureUpdateFailure = (response) => {
     <h3>ERROR: Failed to update Adventure</h3>
     `)
   $('#user-message').html(output)
+  $('#update-adventure-box').trigger('reset')
 }
 
 // console.log($('span[button id="'adventure._id-edit'"]')
@@ -50,5 +60,6 @@ module.exports = {
   showAdventuresSuccess,
   adventureFailure,
   adventureDeleteFailure,
-  adventureUpdateFailure
+  adventureUpdateFailure,
+  adventureUpdateSuccess
 }

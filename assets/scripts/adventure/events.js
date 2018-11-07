@@ -48,6 +48,7 @@ const onUpdateAdventure = (event) => {
   }
   console.log(updatedAdventure)
   api.updatedAdventure(updatedAdventure)
+    .then(ui.adventureUpdateSuccess)
     .then(() => onShowAdventures(event))
     .catch(ui.adventureUpdateFailure)
 }
