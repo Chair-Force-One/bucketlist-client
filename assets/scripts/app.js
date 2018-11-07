@@ -17,6 +17,10 @@ $(() => {
 })
 
 const addEventListeners = () => {
+  $('#show-markers-button').on('click', () => {
+    mapsFunctions.dropMarker({lat: -25.363, lng: 131.044}, 'A')
+  })
+
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#change-password-form').on('submit', authEvents.onChangePassword)

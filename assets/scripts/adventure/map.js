@@ -48,7 +48,17 @@ const setupMap = () => {
     .catch(console.error)
 }
 
+const dropMarker = (location, label) => {
+  const marker = new store.googleMaps.Marker({
+    position: location,
+    map: store.map,
+    title: 'Hello World!'
+  })
+  store.markers.push(marker)
+}
+
 module.exports = {
-  setupMap
+  setupMap,
+  dropMarker
   // addMarker
 }
