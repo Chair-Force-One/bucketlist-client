@@ -1,13 +1,8 @@
 const loadGoogleMapsApi = require('load-google-maps-api')
-const dotenv = require('dotenv')
-const result = dotenv.config()
-if (result.error) {
-  throw result.error
-}
-console.log(result.parsed)
+const store = ('./../../store.js')
 
 const initOptions = {
-  key: //ADD KEY HERE
+  key: 'AIzaSyCwyN8WOioGkLhjSerpMlRBR03dmdVOjvo'
 }
 const initMap = (googleMaps) => {
   const map = new googleMaps.Map(document.getElementById('map'), {
@@ -20,13 +15,21 @@ const initMap = (googleMaps) => {
   return map
 }
 
+const addMarker = (location) => {
+
+}
+
 const setupMap = () => {
   loadGoogleMapsApi(initOptions)
     .then(initMap)
+    .then((map) => {
+      store.map = map
+    })
     .then(console.log)
     .catch(console.error)
 }
 
 module.exports = {
-  setupMap
+  setupMap,
+  addMarker
 }
