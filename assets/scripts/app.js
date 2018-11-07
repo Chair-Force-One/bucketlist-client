@@ -5,12 +5,15 @@
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
+
 const authEvents = require('./auth/events.js')
 const adventureEvents = require('./adventure/events.js')
+const mapsFunctions = require('./adventure/map.js')
 
 $(() => {
   addEventListeners()
   setDefaultState()
+  mapsFunctions.setupMap()
 })
 
 const addEventListeners = () => {
