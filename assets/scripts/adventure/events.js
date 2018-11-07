@@ -43,12 +43,12 @@ const onUpdateAdventure = (event) => {
       'title': data.adventure.title,
       'place': data.adventure.place,
       'notes': data.adventure.notes,
-      'checked': data.adventure.checked
+      'checked': data.adventure.checked = false
     }
   }
   console.log(updatedAdventure)
   api.updatedAdventure(updatedAdventure)
-    .then(console.log('updated adventure ' + store.updateAdventureId))
+    .then(() => onShowAdventures(event))
     .catch(ui.adventureUpdateFailure)
 }
 

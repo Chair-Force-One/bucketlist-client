@@ -26,9 +26,9 @@ const showAdventures = (data) => {
 
 const updatedAdventure = (updatedAdventure) => {
   // const updateId = store.updateid
-  console.log(store.updateid)
+  // console.log(store.updateid)
   return $.ajax({
-    url: config.apiUrl + '/adventures/' + store.updateid,
+    url: config.apiUrl + '/adventures/' + store.updateAdventureId,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
