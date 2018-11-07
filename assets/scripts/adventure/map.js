@@ -1,9 +1,11 @@
 const loadGoogleMapsApi = require('load-google-maps-api')
-const store = ('./../../store.js')
+
+const store = require('./../store.js')
 
 const initOptions = {
   key: 'AIzaSyCwyN8WOioGkLhjSerpMlRBR03dmdVOjvo'
 }
+
 const initMap = (googleMaps) => {
   const map = new googleMaps.Map(document.getElementById('map'), {
     center: {
@@ -15,9 +17,14 @@ const initMap = (googleMaps) => {
   return map
 }
 
-const addMarker = (location) => {
-
-}
+// const addMarker = (position, title) => {
+//   const marker = new google.maps.Marker({
+//     position: position,
+//     map: store.map,
+//     title: title
+//   })
+//   store.markers.push(marker)
+// }
 
 const setupMap = () => {
   loadGoogleMapsApi(initOptions)
@@ -31,5 +38,5 @@ const setupMap = () => {
 
 module.exports = {
   setupMap,
-  addMarker
+  // addMarker
 }
