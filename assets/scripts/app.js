@@ -18,7 +18,7 @@ $(() => {
 
 const addEventListeners = () => {
   $('#show-markers-button').on('click', () => {
-    mapsFunctions.dropMarker({lat: -25.363, lng: 131.044}, 'A')
+    mapsFunctions.codeAddress('200 Portland Street', 'A', 'Title')
   })
 
   $('#sign-up-form').on('submit', authEvents.onSignUp)

@@ -20,10 +20,10 @@ const loadMapAPI = (options) => {
 const initMapObject = (googleMaps) => {
   const map = new googleMaps.Map(document.getElementById('map'), {
     center: {
-      lat: 40.7484405,
-      lng: -73.9944191
+      lat: 0,
+      lng: 0
     },
-    zoom: 3
+    zoom: 2
   })
   return map
 }
@@ -44,6 +44,7 @@ const setupMap = () => {
     .then(initMapObject) // Needs googleMaps Object created by loadMapAPI()
     .then((map) => { // Store the map returned by initMapObject
       store.map = map
+      store.markers = [] // no markers on map yet
     })
     .catch(console.error)
 }
@@ -52,13 +53,26 @@ const dropMarker = (location, label) => {
   const marker = new store.googleMaps.Marker({
     position: location,
     map: store.map,
-    title: 'Hello World!'
+    label: label
   })
   store.markers.push(marker)
 }
 
+const findPlaceLocation = (place, label, title) => {
+  const geocoder = new store.googleMaps.Geocoder()
+  geocoder.geocode({ 'address': place }, (results, status) => {
+    if (status === 'OK') {
+      // map.setCenter(results[0].geometry.location);
+      dropMarker(results[0].geometry.location, label, title)
+    } else {
+      console.log('Geocode was not successful for the following reason: ' + status)
+    }
+  })
+}
+
 module.exports = {
   setupMap,
-  dropMarker
+  dropMarker,
+  findPlaceLocation
   // addMarker
 }

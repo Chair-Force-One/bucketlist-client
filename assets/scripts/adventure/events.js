@@ -5,6 +5,7 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const map = require('./map.js')
 
 const onCreateAdventure = (event) => {
   event.preventDefault()
@@ -75,6 +76,7 @@ const onShowAdventures = () => {
         $(`#${adventure._id}-delete`).on('click', () => {
           onClickDelete(adventure._id)
         })
+        map.findPlaceLocation(adventure.place, '1', adventure.title)
       })
     })
     .catch(ui.adventureFailure)
