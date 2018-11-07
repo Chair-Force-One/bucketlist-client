@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
+
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
       <!-- Do not add `script` tags-->
@@ -31,6 +32,8 @@
         </div>
       </nav>
 
+      <div id="map" class="map"></div>
+
       <div id="sign-in-box" class="container">
         <form id="sign-in-form" class='form-inline'>
           <legend> Sign In </legend>
@@ -44,7 +47,7 @@
 
       </div>
 
-      <div id="sign-up-box" class="container">
+      <div id="sign-up-box" class="form-inline">
         <form id="sign-up-form" class="form-inline">
           <legend> Create User </legend>
           <input id="sign-up-email" name="credentials[email]" type="email" required placeholder="Email" class="form-control"/>
@@ -55,7 +58,7 @@
         </form>
       </div>
 
-      <div id="change-password-box" class="container">
+      <div id="change-password-box" class="form-inline">
         <form id="change-password-form" class="form-inline">
           <legend> Change Password </legend>
           <input id="change-pwd-old" name="passwords[old]" type="password" required placeholder="Old Password" class="form-control"/>
@@ -71,16 +74,28 @@
       <div id="adventure-control-buttons" class="container">
         <button id="show-create-button" class="btn btn-danger"> Add Item </button>
         <button id="get-adventures-button" class="btn btn-danger"> Show All </button>
+        <button id="show-markers-button" class="btn btn-danger"> Show Marker </button>
       </div>
 
       <div id="add-adventure-box" class="container">
-        <form id="add-adventure-form" class="form-inline">
+        <form id="add-adventure-form" class="form-group row">
           <legend> Add Adventure </legend>
           <input id="create-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
           <input id="create-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
-          <input id="create-location" name="adventure[note]" type="text" placeholder="Notes" class="form-control"/>
+          <input id="create-location" name="adventure[notes]" type="text" placeholder="Notes" class="form-control"/>
           <button type="submit"  name="create" class='btn btn-danger'> Create </button>
           <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+      </div>
+
+      <div id="update-adventure-box" class="container">
+        <form id="update-adventure-form" class="form-group row">
+          <legend> Update Adventure </legend>
+          <input id="update-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
+          <input id="update-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
+          <input id="update-location" name="adventure[notes]" type="text" placeholder="Notes" class="form-control"/>
+          <button type="submit"  name="update" class='btn btn-danger'> update </button>
+          <button id="cancel-update-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
       </div>
 

@@ -24,7 +24,31 @@ const showAdventures = (data) => {
   })
 }
 
+const updatedAdventure = (updatedAdventure) => {
+  // const updateId = store.updateid
+  // console.log(store.updateid)
+  return $.ajax({
+    url: config.apiUrl + '/adventures/' + store.updateAdventureId,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'PATCH',
+    data: updatedAdventure
+  })
+}
+
+const deleteAdventure = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/adventures/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
 module.exports = {
   createAdventure,
-  showAdventures
+  showAdventures,
+  deleteAdventure,
+  updatedAdventure
 }

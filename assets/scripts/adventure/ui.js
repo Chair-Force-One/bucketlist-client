@@ -1,6 +1,6 @@
 'use strict'
 
-const store = require('../store.js')
+// const store = require('../store.js')
 const adventuresTemplate = require('../templates/adventures.handlebars')
 
 const createAdventureSuccess = (response) => {
@@ -16,6 +16,17 @@ const createAdventureSuccess = (response) => {
 const showAdventuresSuccess = (response) => {
   const adventuresHTML = adventuresTemplate({adventures: response.adventures})
   $('#show-adventures-section').html(adventuresHTML)
+  console.log(response.adventures)
+  return response.adventures
+}
+
+const adventureUpdateSuccess = (response) => {
+  const output = (`
+    <h3>Update Adventure Success</h3>
+    `)
+  $('#user-message').html(output)
+  $('#update-adventure-form').trigger('reset')
+  $('#update-adventure-box').hide()
 }
 
 const adventureFailure = (response) => {
@@ -26,8 +37,29 @@ const adventureFailure = (response) => {
   $('#user-message').html(output)
 }
 
+const adventureDeleteFailure = (response) => {
+  $('#user-message').html('')
+  const output = (`
+    <h3>ERROR: Failed to delete Adventure</h3>
+    `)
+  $('#user-message').html(output)
+}
+
+const adventureUpdateFailure = (response) => {
+  const output = (`
+    <h3>ERROR: Failed to update Adventure</h3>
+    `)
+  $('#user-message').html(output)
+  $('#update-adventure-box').trigger('reset')
+}
+
+// console.log($('span[button id="'adventure._id-edit'"]')
+
 module.exports = {
   createAdventureSuccess,
   showAdventuresSuccess,
-  adventureFailure
+  adventureFailure,
+  adventureDeleteFailure,
+  adventureUpdateFailure,
+  adventureUpdateSuccess
 }
