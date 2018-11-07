@@ -1,12 +1,23 @@
 const loadGoogleMapsApi = require('load-google-maps-api')
-
 const store = require('./../store.js')
+const config = require('./../config.js')
 
-const initOptions = {
-  key: 'AIzaSyCwyN8WOioGkLhjSerpMlRBR03dmdVOjvo'
+const getKey = () => {
+  return $.ajax({
+    url: config.apiUrl + '/maps',
+    method: 'GET'
+  })
 }
 
-const initMap = (googleMaps) => {
+const loadMapAPI = (options) => {
+  return loadGoogleMapsApi(options)
+    .then((response) => {
+      console.log('initial', response)
+      return response
+    })
+}
+
+const initMapObject = (googleMaps) => {
   const map = new googleMaps.Map(document.getElementById('map'), {
     center: {
       lat: 40.7484405,
@@ -17,26 +28,27 @@ const initMap = (googleMaps) => {
   return map
 }
 
-// const addMarker = (position, title) => {
-//   const marker = new google.maps.Marker({
-//     position: position,
-//     map: store.map,
-//     title: title
-//   })
-//   store.markers.push(marker)
-// }
-
 const setupMap = () => {
-  loadGoogleMapsApi(initOptions)
-    .then(initMap)
-    .then((map) => {
+  const initOptions = {}
+  getKey()
+    .then((response) => {
+      console.log('GET KEY RESPONSE: ', response.key)
+      return response
+    })
+    .then((response) => { initOptions.key = response.key })
+    .then(() => { return loadMapAPI(initOptions) })
+    .then((googleMaps) => {
+      store.googleMaps = googleMaps // Store the initalized API Object
+      return googleMaps
+    })
+    .then(initMapObject) // Needs googleMaps Object created by loadMapAPI()
+    .then((map) => { // Store the map returned by initMapObject
       store.map = map
     })
-    .then(console.log)
     .catch(console.error)
 }
 
 module.exports = {
-  setupMap,
+  setupMap
   // addMarker
 }

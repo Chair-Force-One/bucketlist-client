@@ -63,4 +63,5 @@ const setDefaultState = () => {
   $('#change-password-box').hide()
   $('#adventure-control-buttons').hide()
   $('#add-adventure-box').hide()
+  $('#map').hide()
 }
