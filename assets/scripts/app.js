@@ -70,4 +70,5 @@ const setDefaultState = () => {
   $('#adventure-control-buttons').hide()
   $('#add-adventure-box').hide()
   $('#update-adventure-box').hide()
+  $('#map').hide()
 }
