@@ -22,13 +22,12 @@ const addEventListeners = () => {
   $('#add-adventure-form').on('submit', adventureEvents.onCreateAdventure)
   $('#get-adventures-button').on('click', adventureEvents.onShowAdventures)
 
-// update adventure event handlers
+  // update adventure event handlers
   $('#update-adventure-form').on('submit', adventureEvents.onUpdateAdventure)
   $('#cancel-update-button').on('click', () => {
     $('#update-adventure-box').hide()
     $('#update-adventure-form').trigger('reset')
   })
-
   $('#show-sign-in-button').on('click', () => {
     $('#sign-in-box').show()
   })
