@@ -27,6 +27,7 @@ const signInSuccess = (response) => {
   $('#authenticated-buttons').show()
   $('#adventure-control-buttons').show()
   $('#map').show()
+  //$('body').css({'opacity': 0})
 }
 
 const changePasswordSuccess = (response) => {
