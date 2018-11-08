@@ -24,11 +24,11 @@ const showAdventures = (data) => {
   })
 }
 
-const updatedAdventure = (updatedAdventure) => {
+const updateAdventure = (updatedAdventure, id) => {
   // const updateId = store.updateid
   // console.log(store.updateid)
   return $.ajax({
-    url: config.apiUrl + '/adventures/' + store.updateAdventureId,
+    url: config.apiUrl + '/adventures/' + id,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
@@ -50,5 +50,5 @@ module.exports = {
   createAdventure,
   showAdventures,
   deleteAdventure,
-  updatedAdventure
+  updateAdventure
 }

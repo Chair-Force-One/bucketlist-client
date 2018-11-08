@@ -14,15 +14,25 @@
   <tbody id="list-table">
     {{#each adventures as |adventure|}}
         <tr>
-          <th scope="row"><button id="{{adventure._id}}-plot" class="btn btn-primary">Show</button></th>
-          <td>{{adventure.priority}}</td>
-          <td>{{adventure.title}}</td>
-          <td>{{adventure.place}}</td>
-          <td>{{adventure.notes}}</td>
-          <td><button id="{{adventure._id}}-checkbox" class="btn btn-success">Complete</button></td>
-          <td><button id="{{adventure._id}}-edit" class="btn btn-warning">Edit</button></td>
-          <td><button id="{{adventure._id}}-delete" class="btn btn-danger">Delete</button></td>
-
+          {{#if adventure.checked}}
+            <th class="complete" scope="row"><button id="{{adventure._id}}-plot" class="btn btn-primary">Show</button></th>
+            <td class="complete">{{adventure.priority}}</td>
+            <td class="complete">{{adventure.title}}</td>
+            <td class="complete">{{adventure.place}}</td>
+            <td class="complete">{{adventure.notes}}</td>
+            <td class="complete"><button id="{{adventure._id}}-checkbox" class="btn btn-outline-secondary">Unfinish</button></td>
+            <td class="complete"><button id="{{adventure._id}}-edit" class="btn btn-warning">Edit</button></td>
+            <td class="complete"><button id="{{adventure._id}}-delete" class="btn btn-danger">Delete</button></td>
+          {{else}}
+            <th scope="row"><button id="{{adventure._id}}-plot" class="btn btn-primary">Show</button></th>
+            <td>{{adventure.priority}}</td>
+            <td>{{adventure.title}}</td>
+            <td>{{adventure.place}}</td>
+            <td>{{adventure.notes}}</td>
+            <td><button id="{{adventure._id}}-checkbox" class="btn btn-success">Complete</button></td>
+            <td><button id="{{adventure._id}}-edit" class="btn btn-warning">Edit</button></td>
+            <td><button id="{{adventure._id}}-delete" class="btn btn-danger">Delete</button></td>
+          {{/if}}
       </tr>
     {{/each}}
   </tbody>

@@ -12,13 +12,21 @@ html, body {
 }
 
 .messages {
-  color: red
+  color: white;
 }
 
 .btn-edit {
   color: #FFFBB8;
   background-color: #59ECFF;
   border-color: #1707ED;
+}
+
+.navbar-color {
+  background-color: #000;
+}
+
+.complete {
+  background-color: #5cb85c;
 }
 
 .btn-edit:hover,

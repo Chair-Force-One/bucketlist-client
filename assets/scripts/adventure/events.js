@@ -15,11 +15,34 @@ const onCreateAdventure = (event) => {
   data.adventure.checked = false // Always create an adventure with false for checked status
   api.createAdventure(data)
     .then(ui.createAdventureSuccess)
+    .then(showAdventures)
     .catch(ui.adventureFailure)
 }
 
 const onClickCheckbox = (id) => {
-  console.log(id)
+  console.log('Before', store.adventures[id].checked)
+  store.adventures[id].checked = !store.adventures[id].checked
+  console.log('Changed', store.adventures[id].checked)
+  const current = store.adventures[id]
+
+  const updatedAdventure = {
+    'adventure': {
+      'priority': current.priority,
+      'title': current.title,
+      'place': current.place,
+      'notes': current.notes,
+      'checked': current.checked
+    }
+  }
+
+  console.log('Update', updatedAdventure)
+  api.updateAdventure(updatedAdventure, id)
+    .then(ui.adventureUpdateSuccess)
+    .then(showAdventures)
+    .then(() => {
+      console.log('After', store.adventures[id])
+    })
+    .catch(ui.adventureUpdateFailure)
 }
 
 const onClickEdit = (id) => {
@@ -45,11 +68,12 @@ const onUpdateAdventure = (event) => {
       'title': data.adventure.title,
       'place': data.adventure.place,
       'notes': data.adventure.notes,
-      'checked': data.adventure.checked = false
+      'checked': data.adventure.checked
     }
   }
+
   console.log(updatedAdventure)
-  api.updatedAdventure(updatedAdventure)
+  api.updateAdventure(updatedAdventure, store.updateAdventureId)
     .then(ui.adventureUpdateSuccess)
     .then(showAdventures)
     .catch(ui.adventureUpdateFailure)
@@ -71,7 +95,8 @@ const onClickCenter = () => {
   map.resetZoom()
 }
 
-const addAdventuresEvents = (adventures) => {
+const handleAdventures = (adventures) => {
+  store.adventures = {}
   adventures.forEach((adventure) => {
     $(`#${adventure._id}-checkbox`).on('click', () => {
       onClickCheckbox(adventure._id)
@@ -88,13 +113,15 @@ const addAdventuresEvents = (adventures) => {
 
     const priority = adventure.priority === undefined ? '' : adventure.priority.toString()
     map.findPlaceLocation(adventure._id, adventure.place, priority, adventure.title)
+
+    store.adventures[adventure._id] = adventure
   })
 }
 
 const showAdventures = () => {
   api.showAdventures()
     .then(ui.showAdventuresSuccess)
-    .then(addAdventuresEvents)
+    .then(handleAdventures)
     .then(map.resetZoom)
     .catch(ui.adventureFailure)
 }
