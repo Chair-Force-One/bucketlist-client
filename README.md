@@ -2,7 +2,7 @@ BucketLi.st
 
 ![Chair Force One Logo](https://cdn.shopify.com/s/files/1/2237/2693/products/Air_force-5_1024x1024@2x.png?v=1524594398)
 
-Description:
+## Description
 
 Bucket List is designed to help users keep track of everything they plan on doing (eventually). This is an app that allows you to check off items that you’ve accomplished. A new feature is the “City” Function. This function allows you to plan trips and keep locations listed. You can also keep your bucket list organized by priority of what you want to do first. The app is currently free to download with no additional fees.
 
@@ -154,9 +154,7 @@ Client:
 [Google Maps API Documentation](https://cloud.google.com/maps-platform/)
 [Bootstrap Documentation](https://getbootstrap.com/)
 
-## [License](LICENSE)
-
-## Google API Terms of Service:
+## Google API Terms of Service
 
 https://cloud.google.com/maps-platform/terms/
 - All licensing and acceptable use can be found in the above link.
