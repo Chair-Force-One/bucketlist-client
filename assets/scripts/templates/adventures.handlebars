@@ -1,6 +1,7 @@
 <table class="table table-striped table-hover table-sm">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">Priority</th>
       <th scope="col">Title</th>
       <th scope="col">Location</th>
       <th scope="col">Notes</th>
@@ -12,7 +13,8 @@
   <tbody id="list-table">
     {{#each adventures as |adventure|}}
         <tr>
-          <th scope="row">{{adventure.title}}</th>
+          <th scope="row">{{adventure.priority}}</th>
+          <td>{{adventure.title}}</td>
           <td>{{adventure.place}}</td>
           <td>{{adventure.notes}}</td>
           <td><button id="{{adventure._id}}-checkbox" class="btn btn-success">Complete</button></td>
