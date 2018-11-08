@@ -72,12 +72,12 @@
       <br />
 
       <div id="adventure-control-buttons" class="container">
-        <button id="show-create-button" class="btn btn-danger"> Add Item </button>
+        <button id="show-create-button" class="btn btn-danger" data-toggle="modal" data-target="#createAdventureModal"> Add Item </button>
         <button id="get-adventures-button" class="btn btn-danger"> Show All </button>
         <button id="show-markers-button" class="btn btn-danger"> Show Marker </button>
       </div>
 
-      <div id="add-adventure-box" class="container">
+      <!-- <div id="add-adventure-box" class="container">
         <form id="add-adventure-form" class="form-group row">
           <legend> Add Adventure </legend>
           <input id="create-priority" name="adventure[priority]" type="number" required placeholder="Priority" class="form-control"/>
@@ -87,7 +87,45 @@
           <button type="submit"  name="create" class='btn btn-danger'> Create </button>
           <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
+      </div> -->
+
+      <!-- Create Article Modal -->
+<div class="modal fade hide" id="createAdventureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create a New Adventure!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <form id="add-adventure-form" class="px-4 py-3 hidden form-group row" role="form">
+          <div class="form-group">
+            <label for="description">Priority</label>
+            <input  id="create-priority" required class="form-control" placeholder="Priority" name="adventure[priority]" type="number"/>
+        </div>
+            <div class="form-group">
+              <label for="size">Title</label>
+              <input  id="create-title" required class="form-control" placeholder="Title" name="adventure[title]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Place</label>
+                <input  id="create-place" required class="form-control" placeholder="Location" name="adventure[place]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Notes</label>
+                <input  id="create-location" required class="form-control" placeholder="Notes" name="adventure[notes]" type="text"/>
+        </div>
+                <div class="modal-footer">
+                  <button id="close-create-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Create it!</button>
+                </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div id="update-adventure-box" class="container">
         <form id="update-adventure-form" class="form-group row">

@@ -9,6 +9,7 @@ const createAdventureSuccess = (response) => {
     <h4> Created! </h4>
     `)
   $('#user-message').html(output)
+  $('#createAdventureModal').modal('hide')
   $('#add-adventure-form').trigger('reset')
   console.log(response) // TODO: Remove console.log from production
 }
