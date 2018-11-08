@@ -50,10 +50,10 @@ const addEventListeners = () => {
     $('#sign-up-box').hide()
     $('#sign-up-form').trigger('reset')
   })
-  $('#show-ch-pwd-button').on('click', () => {
+  $('#show-change-password-button').on('click', () => {
     $('#change-password-box').show()
   })
-  $('#cancel-ch-pwd-button').on('click', () => {
+  $('#cancel-change-password-button').on('click', () => {
     $('#change-password-box').hide()
     $('#change-password-form').trigger('reset')
   })
