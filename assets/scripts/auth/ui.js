@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const map = require('../adventure/map.js')
 
 const signUpSuccess = (response) => {
   $('#user-messages').html('')
@@ -39,11 +40,15 @@ const changePasswordSuccess = (response) => {
 
 const signOutSuccess = (response) => {
   $('#user-message').html(`<h5> Signed Out </h5>`)
-  // store.user = null // remove all stored data on logout
-  // store.currentGame = null
   $('#unauthenticated-buttons').show()
   $('#authenticated-buttons').hide()
   $('#ch-pwd-box').hide()
+  $('#map').hide()
+  $('#show-adventures-section').html('')
+  $('#adventure-control-buttons').hide()
+  map.deleteAllMarkers()
+  store.user = null // remove all stored data on logout
+  store.adventures = {}
 }
 
 // OPTIMIZE: Create failure functions for each possible state rather than a blanket case

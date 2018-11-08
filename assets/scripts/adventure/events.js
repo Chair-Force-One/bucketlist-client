@@ -15,11 +15,34 @@ const onCreateAdventure = (event) => {
   data.adventure.checked = false // Always create an adventure with false for checked status
   api.createAdventure(data)
     .then(ui.createAdventureSuccess)
+    .then(showAdventures)
     .catch(ui.adventureFailure)
 }
 
 const onClickCheckbox = (id) => {
-  console.log(id)
+  console.log('Before', store.adventures[id].checked)
+  store.adventures[id].checked = !store.adventures[id].checked
+  console.log('Changed', store.adventures[id].checked)
+  const current = store.adventures[id]
+
+  const updatedAdventure = {
+    'adventure': {
+      'priority': current.priority,
+      'title': current.title,
+      'place': current.place,
+      'notes': current.notes,
+      'checked': current.checked
+    }
+  }
+
+  console.log('Update', updatedAdventure)
+  api.updateAdventure(updatedAdventure, id)
+    .then(ui.adventureUpdateSuccess)
+    .then(showAdventures)
+    .then(() => {
+      console.log('After', store.adventures[id])
+    })
+    .catch(ui.adventureUpdateFailure)
 }
 
 const onClickEdit = (id) => {
@@ -45,13 +68,14 @@ const onUpdateAdventure = (event) => {
       'title': data.adventure.title,
       'place': data.adventure.place,
       'notes': data.adventure.notes,
-      'checked': data.adventure.checked = false
+      'checked': data.adventure.checked
     }
   }
+
   console.log(updatedAdventure)
-  api.updatedAdventure(updatedAdventure)
+  api.updateAdventure(updatedAdventure, store.updateAdventureId)
     .then(ui.adventureUpdateSuccess)
-    .then(() => onShowAdventures(event))
+    .then(showAdventures)
     .catch(ui.adventureUpdateFailure)
 }
 
@@ -59,32 +83,52 @@ const onClickDelete = (id) => {
   event.preventDefault()
   console.log(id)
   api.deleteAdventure(id)
-    .then(() => onShowAdventures(event))
+    .then(showAdventures)
     .catch(ui.adventureDeleteFailure)
 }
 
-const onShowAdventures = () => {
+const onClickPlot = (id) => {
+  map.centerOn(id)
+}
+
+const onClickCenter = () => {
+  map.resetZoom()
+}
+
+const handleAdventures = (adventures) => {
+  store.adventures = {}
+  adventures.forEach((adventure) => {
+    $(`#${adventure._id}-checkbox`).on('click', () => {
+      onClickCheckbox(adventure._id)
+    })
+    $(`#${adventure._id}-edit`).on('click', () => {
+      onClickEdit(adventure._id)
+    })
+    $(`#${adventure._id}-delete`).on('click', () => {
+      onClickDelete(adventure._id)
+    })
+    $(`#${adventure._id}-plot`).on('click', () => {
+      onClickPlot(adventure._id)
+    })
+
+    const priority = adventure.priority === undefined ? '' : adventure.priority.toString()
+    map.findPlaceLocation(adventure._id, adventure.place, priority, adventure.title)
+
+    store.adventures[adventure._id] = adventure
+  })
+}
+
+const showAdventures = () => {
   api.showAdventures()
     .then(ui.showAdventuresSuccess)
-    .then((adventures) => {
-      adventures.forEach((adventure) => {
-        $(`#${adventure._id}-checkbox`).on('click', () => {
-          onClickCheckbox(adventure._id)
-        })
-        $(`#${adventure._id}-edit`).on('click', () => {
-          onClickEdit(adventure._id)
-        })
-        $(`#${adventure._id}-delete`).on('click', () => {
-          onClickDelete(adventure._id)
-        })
-        map.findPlaceLocation(adventure.place, '1', adventure.title)
-      })
-    })
+    .then(handleAdventures)
+    .then(map.resetZoom)
     .catch(ui.adventureFailure)
 }
 
 module.exports = {
   onCreateAdventure,
-  onShowAdventures,
+  showAdventures,
+  onClickCenter,
   onUpdateAdventure
 }
