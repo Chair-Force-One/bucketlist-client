@@ -27,14 +27,14 @@ const addEventListeners = () => {
   $('#sign-out-button').on('click', authEvents.onSignOut)
 
   $('#add-adventure-form').on('submit', adventureEvents.onCreateAdventure)
-  $('#get-adventures-button').on('click', adventureEvents.onShowAdventures)
-
+  $('#title-link').on('click', adventureEvents.onClickCenter)
   // update adventure event handlers
   $('#update-adventure-form').on('submit', adventureEvents.onUpdateAdventure)
   $('#cancel-update-button').on('click', () => {
     $('#update-adventure-box').hide()
     $('#update-adventure-form').trigger('reset')
   })
+
   $('#show-sign-in-button').on('click', () => {
     $('#sign-in-box').show()
   })

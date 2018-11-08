@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const adventureEvents = require('./../adventure/events.js')
 
 const onSignUp = (event) => {
   event.preventDefault()
@@ -17,6 +18,7 @@ const onSignIn = (event) => {
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(adventureEvents.showAdventures)
     .catch(ui.failure)
 }
 

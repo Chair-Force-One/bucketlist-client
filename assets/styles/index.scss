@@ -1,5 +1,16 @@
-//@import '~//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css';
+// @import '~//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css';
 @import '~bootstrap/scss/bootstrap';
+
+#background-image {
+  background-image: url("https://dp1zob55dtktz.cloudfront.net/wp-content/uploads/2017/02/21203825/bucket-list.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 100px;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-size: contain;
+}
 
 .map {
   height: 50%;
@@ -9,4 +20,62 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.messages {
+  color: white;
+}
+
+.btn-edit {
+  color: #FFFBB8;
+  background-color: #59ECFF;
+  border-color: #1707ED;
+}
+
+.navbar-color {
+  background-color: #000;
+}
+
+.complete {
+  background-color: #5cb85c;
+}
+
+.btn-edit:hover,
+.btn-edit:focus,
+.btn-edit:active,
+.btn-edit.active,
+.open .dropdown-toggle.btn-edit {
+  color: #FFFBB8;
+  background-color: #DAC9F0;
+  border-color: #1707ED;
+}
+
+.btn-edit:active,
+.btn-edit.active,
+.open .dropdown-toggle.btn-edit {
+  background-image: none;
+}
+
+.btn-edit.disabled,
+.btn-edit[disabled],
+fieldset[disabled] .btn-edit,
+.btn-edit.disabled:hover,
+.btn-edit[disabled]:hover,
+fieldset[disabled] .btn-edit:hover,
+.btn-edit.disabled:focus,
+.btn-edit[disabled]:focus,
+fieldset[disabled] .btn-edit:focus,
+.btn-edit.disabled:active,
+.btn-edit[disabled]:active,
+fieldset[disabled] .btn-edit:active,
+.btn-edit.disabled.active,
+.btn-edit[disabled].active,
+fieldset[disabled] .btn-edit.active {
+  background-color: #59ECFF;
+  border-color: #1707ED;
+}
+
+.btn-edit .badge {
+  color: #59ECFF;
+  background-color: #FFFBB8;
 }
