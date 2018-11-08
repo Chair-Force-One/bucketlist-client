@@ -1,25 +1,28 @@
 <table class="table table-striped table-hover table-sm">
   <thead class="thead-dark">
     <tr>
+      <th scope="col"></th>
       <th scope="col">Priority</th>
       <th scope="col">Title</th>
       <th scope="col">Location</th>
       <th scope="col">Notes</th>
-      <th scope="col">Complete</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody id="list-table">
     {{#each adventures as |adventure|}}
         <tr>
-          <th scope="row">{{adventure.priority}}</th>
+          <th scope="row"><button id="{{adventure._id}}-plot" class="btn btn-primary">Show</button></th>
+          <td>{{adventure.priority}}</td>
           <td>{{adventure.title}}</td>
           <td>{{adventure.place}}</td>
           <td>{{adventure.notes}}</td>
           <td><button id="{{adventure._id}}-checkbox" class="btn btn-success">Complete</button></td>
           <td><button id="{{adventure._id}}-edit" class="btn btn-warning">Edit</button></td>
           <td><button id="{{adventure._id}}-delete" class="btn btn-danger">Delete</button></td>
+
       </tr>
     {{/each}}
   </tbody>

@@ -51,7 +51,7 @@ const onUpdateAdventure = (event) => {
   console.log(updatedAdventure)
   api.updatedAdventure(updatedAdventure)
     .then(ui.adventureUpdateSuccess)
-    .then(() => onShowAdventures(event))
+    .then(showAdventures)
     .catch(ui.adventureUpdateFailure)
 }
 
@@ -59,32 +59,49 @@ const onClickDelete = (id) => {
   event.preventDefault()
   console.log(id)
   api.deleteAdventure(id)
-    .then(() => onShowAdventures(event))
+    .then(showAdventures)
     .catch(ui.adventureDeleteFailure)
 }
 
-const onShowAdventures = () => {
+const onClickPlot = (id) => {
+  map.centerOn(id)
+}
+
+const onClickCenter = () => {
+  map.resetZoom()
+}
+
+const addAdventuresEvents = (adventures) => {
+  adventures.forEach((adventure) => {
+    $(`#${adventure._id}-checkbox`).on('click', () => {
+      onClickCheckbox(adventure._id)
+    })
+    $(`#${adventure._id}-edit`).on('click', () => {
+      onClickEdit(adventure._id)
+    })
+    $(`#${adventure._id}-delete`).on('click', () => {
+      onClickDelete(adventure._id)
+    })
+    $(`#${adventure._id}-plot`).on('click', () => {
+      onClickPlot(adventure._id)
+    })
+
+    const priority = adventure.priority === undefined ? '' : adventure.priority.toString()
+    map.findPlaceLocation(adventure._id, adventure.place, priority, adventure.title)
+  })
+}
+
+const showAdventures = () => {
   api.showAdventures()
     .then(ui.showAdventuresSuccess)
-    .then((adventures) => {
-      adventures.forEach((adventure) => {
-        $(`#${adventure._id}-checkbox`).on('click', () => {
-          onClickCheckbox(adventure._id)
-        })
-        $(`#${adventure._id}-edit`).on('click', () => {
-          onClickEdit(adventure._id)
-        })
-        $(`#${adventure._id}-delete`).on('click', () => {
-          onClickDelete(adventure._id)
-        })
-        map.findPlaceLocation(adventure.place, '1', adventure.title)
-      })
-    })
+    .then(addAdventuresEvents)
+    .then(map.resetZoom)
     .catch(ui.adventureFailure)
 }
 
 module.exports = {
   onCreateAdventure,
-  onShowAdventures,
+  showAdventures,
+  onClickCenter,
   onUpdateAdventure
 }

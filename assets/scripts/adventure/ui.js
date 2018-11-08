@@ -2,6 +2,7 @@
 
 // const store = require('../store.js')
 const adventuresTemplate = require('../templates/adventures.handlebars')
+const store = require('../store.js')
 
 const createAdventureSuccess = (response) => {
   $('#user-messages').html('')
@@ -18,6 +19,10 @@ const showAdventuresSuccess = (response) => {
   const adventuresHTML = adventuresTemplate({adventures: response.adventures})
   $('#show-adventures-section').html(adventuresHTML)
   console.log(response.adventures)
+  store.adventures = {}
+  response.adventures.forEach((adventure) => { // Store adventures with key of _id
+    store.adventures[adventure._id] = adventure
+  })
   return response.adventures
 }
 
