@@ -48,6 +48,8 @@ const signOutSuccess = (response) => {
   $('#show-adventures-section').html('')
   $('#adventure-control-buttons').hide()
   $('#change-password-form').trigger('reset')
+  $('#update-adventure-form').trigger('reset')
+  $('#add-adventure-form').trigger('reset')
   map.deleteAllMarkers()
   store.user = null // remove all stored data on logout
   store.adventures = {}

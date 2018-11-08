@@ -61,9 +61,13 @@ const addEventListeners = () => {
   $('#show-create-button').on('click', () => {
     $('#add-adventure-box').show()
   })
-  $('#cancel-create-button').on('click', () => {
-    $('#add-adventure-box').hide()
+
+  $('#close-create-article').on('click', () => {
     $('#add-adventure-form').trigger('reset')
+  })
+
+  $('#cancel-update-button').on('click', () => {
+    $('#update-adventure-form').trigger('reset')
   })
 }
 const setDefaultState = () => {

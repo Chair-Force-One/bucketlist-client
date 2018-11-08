@@ -41,7 +41,7 @@ const onClickCheckbox = (id) => {
 const onClickEdit = (id) => {
   event.preventDefault()
   store.updateAdventureId = id
-  console.log(store.updateAdventureId)
+  // console.log(store.updateAdventureId)
 
   $('#update-adventure-box').show()
 
