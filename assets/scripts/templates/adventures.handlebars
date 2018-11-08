@@ -30,7 +30,7 @@
             <td>{{adventure.place}}</td>
             <td>{{adventure.notes}}</td>
             <td><button id="{{adventure._id}}-checkbox" class="btn btn-success">Complete</button></td>
-            <td><button id="{{adventure._id}}-edit" class="btn btn-warning">Edit</button></td>
+            <td><button id="{{adventure._id}}-edit" class="btn btn-warning" data-toggle="modal" data-target="#updateAdventureModal">Edit</button></td>
             <td><button id="{{adventure._id}}-delete" class="btn btn-danger">Delete</button></td>
           {{/if}}
       </tr>
