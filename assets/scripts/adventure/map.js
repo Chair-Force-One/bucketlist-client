@@ -12,7 +12,7 @@ const getKey = () => {
 const loadMapAPI = (options) => {
   return loadGoogleMapsApi(options)
     .then((response) => {
-      console.log('initial', response)
+      // console.log('initial', response)
       return response
     })
 }
@@ -32,7 +32,7 @@ const setupMap = () => {
   const initOptions = {}
   getKey()
     .then((response) => {
-      console.log('GET KEY RESPONSE: ', response.key)
+      // console.log('GET KEY RESPONSE: ', response.key)
       return response
     })
     .then((response) => { initOptions.key = response.key })
@@ -53,14 +53,14 @@ const dropMarker = (id, location, label) => {
   const marker = new store.googleMaps.Marker({
     position: location,
     map: store.map,
-    label: label,
-    animation: store.googleMaps.Animation.DROP
+    label: label
+    // animation: store.googleMaps.Animation.DROP
   })
   store.markers[id] = marker
 }
 
 const deleteAllMarkers = () => {
-  console.log('Delete')
+  // console.log('Delete')
   for (const key in store.markers) {
     deleteMarker(key)
   }
@@ -86,7 +86,8 @@ const findPlaceLocation = (id, place, label, title) => {
       // map.setCenter(results[0].geometry.location);
       dropMarker(id, results[0].geometry.location, label, title)
     } else {
-      console.log('Geocode was not successful for the following reason: ' + status)
+      $('#user-message').text('Geoode Error: ' + status)
+      // console.log('Geocode was not successful for the following reason: ' + status)
     }
   })
 }

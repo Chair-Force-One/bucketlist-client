@@ -10,7 +10,7 @@ const map = require('./map.js')
 const onCreateAdventure = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  // console.log(data)
+  // // console.log(data)
   data.adventure.checked = false // Always create an adventure with false for checked status
   api.createAdventure(data)
     .then(ui.createAdventureSuccess)
@@ -41,7 +41,7 @@ const onClickCheckbox = (id) => {
 const onClickEdit = (id) => {
   event.preventDefault()
   store.updateAdventureId = id
-  // console.log(store.updateAdventureId)
+  // // console.log(store.updateAdventureId)
 
   $('#update-adventure-box').show()
 
@@ -51,10 +51,10 @@ const onClickEdit = (id) => {
 const onUpdateAdventure = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
 
   // current adventure being updated
-  //  console.log(store.updateid)
+  //  // console.log(store.updateid)
   const updatedAdventure = {
     'adventure': {
       'priority': data.adventure.priority,
@@ -65,7 +65,7 @@ const onUpdateAdventure = (event) => {
     }
   }
 
-  console.log(updatedAdventure)
+  // console.log(updatedAdventure)
   api.updateAdventure(updatedAdventure, store.updateAdventureId)
     .then(ui.adventureUpdateSuccess)
     .then(showAdventures)
@@ -74,7 +74,7 @@ const onUpdateAdventure = (event) => {
 
 const onClickDelete = (id) => {
   event.preventDefault()
-  console.log(id)
+  // console.log(id)
   api.deleteAdventure(id)
     .then(showAdventures)
     .catch(ui.adventureDeleteFailure)
