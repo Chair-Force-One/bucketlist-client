@@ -58,8 +58,15 @@ const dropMarker = (id, location, label) => {
   store.markers[id] = marker
 }
 
+const deleteAllMarkers = () => {
+  console.log('Delete')
+  for (const key in store.markers) {
+    deleteMarker(key)
+  }
+}
 const deleteMarker = (id) => {
-  store.markers[id].setMap(null)
+  store.markers[id].setMap(null) // Remove from map
+  delete store.markers[id] // Remove from store
 }
 
 const resetZoom = () => {
@@ -87,6 +94,7 @@ module.exports = {
   setupMap,
   dropMarker,
   deleteMarker,
+  deleteAllMarkers,
   centerOn,
   resetZoom,
   findPlaceLocation
