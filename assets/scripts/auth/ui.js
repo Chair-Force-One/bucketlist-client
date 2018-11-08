@@ -27,7 +27,6 @@ const signInSuccess = (response) => {
   $('#authenticated-buttons').show()
   $('#adventure-control-buttons').show()
   $('#map').show()
-  //$('body').css({'opacity': 0})
 }
 
 const changePasswordSuccess = (response) => {
@@ -36,6 +35,7 @@ const changePasswordSuccess = (response) => {
     <h6>Password Changed!</h6>
     `)
   $('#user-message').html(outputHTML)
+  $('#change-password-box').hide()
   $('#change-password-form').trigger('reset')
 }
 
@@ -43,10 +43,13 @@ const signOutSuccess = (response) => {
   $('#user-message').html(`<h5> Signed Out </h5>`)
   $('#unauthenticated-buttons').show()
   $('#authenticated-buttons').hide()
-  $('#ch-pwd-box').hide()
+  $('#change-password-box').hide()
   $('#map').hide()
   $('#show-adventures-section').html('')
   $('#adventure-control-buttons').hide()
+  $('#change-password-form').trigger('reset')
+  $('#update-adventure-form').trigger('reset')
+  $('#add-adventure-form').trigger('reset')
   map.deleteAllMarkers()
   store.user = null // remove all stored data on logout
   store.adventures = {}

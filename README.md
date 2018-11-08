@@ -1,113 +1,160 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+BucketLi.st
 
-# browser-template
+![Chair Force One Logo](https://cdn.shopify.com/s/files/1/2237/2693/products/Air_force-5_1024x1024@2x.png?v=1524594398)
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+## Description
 
-## Installation
+Bucket List is designed to help users keep track of everything they plan on doing (eventually). This is an app that allows you to check off items that you’ve accomplished. A new feature is the “City” Function. This function allows you to plan trips and keep locations listed. You can also keep your bucket list organized by priority of what you want to do first. The app is currently free to download with no additional fees.
 
-1. [Download](../../archive/master.zip) this template.
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `ga-wdi-boston.browser-template` with the name of
-    your project.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+Repository Front-End:
+
+https://github.com/Chair-Force-One/bucketlist-client
+
+Link to Front-End:
+
+https://chair-force-one.github.io/bucketlist-client/
+
+Repository Back-End:
+
+https://github.com/Chair-Force-One/bucketlist-api
+
+Link to Back-End:
+
+https://limitless-inlet-83543.herokuapp.com/
+
+## Instructions
+
+1. User should sign-up if not having an account yet.
+2. User should sign-in if they are already signed-up to use the app.
+3. The app allows a signed-in user to create adventures which act as resources to the bucket list.
+4. A User will only have one Bucket List.
+5. In order to add an adventure click the "Add item" button.
+6. Once signed the list auto-populates with adventures.
+7. After creating an adventure, the map shows the user which adventures they have (if Google's geocoder function in their API can correctly guess the targeted location).
+8. A user can sign-out or change password for authentication purposes.
+9. A user can edit, delete, or show an adventure which adjusts accordingly on the front and back end.
+
+## WireFrames
+
+[WireFrame-1](./public/IMG_2381.JPG)
+
+[WireFrame-2](./public/IMG_2382.JPG)
+
+[WireFrame-3](./public/IMG_2383.JPG)
+
+## ERD
+
+[ERD](./public/IMG_6002.JPG)
+
+## User Stories
+
+Authentication:
+
+As a user, I want to be able to sign in to view data from previous sessions
+As a user, i want to be able to create an account
+As a user, I want to be able to change my password
+As a user, I want to be able to sign out
+
+Bucket List:
+
+I want to store a list of things to do
+I want to attach a location to each list item
+I want to be able to check items of the list
+I want to be able to edit or delete items from the list (Different than checking them off)
+I want to be able to sort items by location or by status
+I want to be able to view locations on a map (NOT MVP!!!)
 
 ## Structure
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+Authentication:
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+| Request | Routes | Schema |
+|:-------:|:-------:|:------:|
+|  POST | /sign-up  | Requires=> email: String, password: String, password_confirmation: String |
+|  POST |  /sign-in | Requires=> email: String, password: String |
+|  PATCH |  /change-password | Requires=> old_password: String, new_password: String, token: String |
+|  DELETE |  /sign-out | Requires=> token: String |
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+Adventures:
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+| Request | Routes | Schema |
+|:-------:|:-------:|:------:|
+|  GET | /adventures  | Requires=> token: String |
+|  GET |  /adventures/:id | Requires=> token: String |
+|  POST |  /adventures | Requires=> priority: Number, title: String, place: String, notes: String, token: String |
+|  PATCH |  /adventures/:id | Requires=> priority: Number, title: String, place: String, notes: String, token: String |
+|  DELETE | /adventures/:id | Requires=> token: String |
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+## Technologies Used
 
-## Adding Images
+- HTML
 
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
+- CSS
 
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
-```
+- Mongo
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
+- Mongoose
 
-## Adding Fonts
+- JScript (edited)
 
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
 
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
+## Planning
 
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
+As Team Chair Force We:
 
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
+ - Created a team culture code.
+ - Reviewed Group Guidelines, Working in Groups, and Group Roles and abided by them.
+ - Created team scrum plan.
+ - Reviewed scrum daily.
+ - Created team git workflow and solved any merging conflicts together.
+ - Created User Stories.
+ - Created Wire Frames.
+ - Created ERD.
 
-## Tasks
+Here is our initial plan:
 
-Developers should run these often!
+API:
+ - Download Express API Template
+ - Create a Github Repository
+ - Deploy to Heroku
+ - Create your resource and end points
+ - Test your resource's end points with curl scripts
+ - Add the relationship to a User
+ - Add User ownership to resource controller
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
+Client:
+ - Download Browser Template
+ - Create a Github Repository
+ - Deploy to Github Pages
+ - Review api-token-auth
+ - Sign Up (curl then web app)
+ - Sign In (curl then web app)
+ - Change Password (curl then web app)
+ - Sign Out (curl then web page)
+ - All API calls have success or failure messages
+ - Review query-ajax-post
+ - Create resource (curl then web app)
+ - Get all of their owned resources (curl then web app)
+ - Delete single resource (curl then web app)
+ - Update single resource (curl then web app)
+
+ Final Touches:
+ - README
+ - Troubleshoot/Debug
+ - Style
+
+## Unsolved Issues
+
+- Clean up user interface.
+- Integrate social aspect.
+- Organize list based on completedness.
 
 ## Additional Resources
 
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
+[Google Maps API Documentation](https://cloud.google.com/maps-platform/)
+[Bootstrap Documentation](https://getbootstrap.com/)
 
-## [License](LICENSE)
+## Google API Terms of Service
 
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+https://cloud.google.com/maps-platform/terms/
+- All licensing and acceptable use can be found in the above link.

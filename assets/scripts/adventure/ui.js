@@ -13,13 +13,13 @@ const createAdventureSuccess = (response) => {
   $('#user-message').html(output)
   $('#createAdventureModal').modal('hide')
   $('#add-adventure-form').trigger('reset')
-  console.log(response) // TODO: Remove console.log from production
+  // console.log(response) // TODO: Remove // console.log from production
 }
 
 const showAdventuresSuccess = (response) => {
   const adventuresHTML = adventuresTemplate({adventures: response.adventures})
   $('#show-adventures-section').html(adventuresHTML)
-  console.log(response.adventures)
+  // console.log(response.adventures)
   map.deleteAllMarkers()
   store.adventures = {}
   response.adventures.forEach((adventure) => { // Store adventures with key of _id
@@ -32,6 +32,7 @@ const adventureUpdateSuccess = (response) => {
   const output = (`
     <h3>Update Adventure Success</h3>
     `)
+  $('#updateAdventureModal').modal('hide')
   $('#user-message').html(output)
   $('#update-adventure-form').trigger('reset')
   $('#update-adventure-box').hide()
@@ -61,7 +62,7 @@ const adventureUpdateFailure = (response) => {
   $('#update-adventure-box').trigger('reset')
 }
 
-// console.log($('span[button id="'adventure._id-edit'"]')
+// // console.log($('span[button id="'adventure._id-edit'"]')
 
 module.exports = {
   createAdventureSuccess,
