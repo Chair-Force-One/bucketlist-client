@@ -24,6 +24,16 @@ const showAdventures = (data) => {
   })
 }
 
+const indexAdventures = (data) => {
+  return $.ajax({
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    url: config.apiUrl + '/adventures/' + data,
+    method: 'GET'
+  })
+}
+
 const updatedAdventure = (updatedAdventure) => {
   // const updateId = store.updateid
   // console.log(store.updateid)
@@ -50,5 +60,6 @@ module.exports = {
   createAdventure,
   showAdventures,
   deleteAdventure,
-  updatedAdventure
+  updatedAdventure,
+  indexAdventures
 }

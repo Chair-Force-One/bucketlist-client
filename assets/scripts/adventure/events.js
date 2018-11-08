@@ -17,8 +17,21 @@ const onCreateAdventure = (event) => {
     .catch(ui.adventureFailure)
 }
 
-const onClickCheckbox = (id) => {
+const onClickCheckbox = function (id) {
+//  event.preventDefault()
   console.log(id)
+  api.indexAdventures(id)
+    .then(onChangeCheckBoxState)
+    .catch(ui.adventureUpdateFailure)
+}
+
+const onChangeCheckBoxState = function (response) {
+  store.adventure = response
+  // still do not understand how checked is already changed.
+  console.log(store.adventure.adventure)
+  console.log('in onChangebox')
+  store.adventure.adventure.checked = !store.adventure.adventure.checked
+  console.log(store.adventure.adventure)
 }
 
 const onClickEdit = (id) => {
