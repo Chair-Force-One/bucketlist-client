@@ -32,6 +32,7 @@ const adventureUpdateSuccess = (response) => {
   const output = (`
     <h3>Update Adventure Success</h3>
     `)
+  $('#updateAdventureModal').modal('hide')
   $('#user-message').html(output)
   $('#update-adventure-form').trigger('reset')
   $('#update-adventure-box').hide()

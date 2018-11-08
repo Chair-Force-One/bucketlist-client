@@ -84,18 +84,6 @@
         <button id="show-create-button" class="btn btn-danger" data-toggle="modal" data-target="#createAdventureModal"> Add Item </button>
       </div>
 
-      <!-- <div id="add-adventure-box" class="container">
-        <form id="add-adventure-form" class="form-group row">
-          <legend> Add Adventure </legend>
-          <input id="create-priority" name="adventure[priority]" type="number" required placeholder="Priority" class="form-control"/>
-          <input id="create-title" name="adventure[title]" type="text" required placeholder="Title" class="form-control"/>
-          <input id="create-place" name="adventure[place]" type="text" required placeholder="Location" class="form-control"/>
-          <input id="create-location" name="adventure[notes]" type="text" placeholder="Notes" class="form-control"/>
-          <button type="submit"  name="create" class='btn btn-danger'> Create </button>
-          <button id="cancel-create-button" class="btn btn-danger navbar-btn"> Cancel </button>
-        </form>
-      </div> -->
-
       <!-- Create Article Modal -->
 <div class="modal fade hide" id="createAdventureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -134,7 +122,7 @@
   </div>
 </div>
 
-      <div id="update-adventure-box" class="container">
+      <!-- <div id="update-adventure-box" class="container">
         <form id="update-adventure-form" class="form-group row">
           <legend> Update Adventure </legend>
           <input id="update-priority" name="adventure[priority]" type="number" required placeholder="Priority" class="form-control"/>
@@ -144,7 +132,45 @@
           <button type="submit"  name="update" class='btn btn-danger'> update </button>
           <button id="cancel-update-button" class="btn btn-danger navbar-btn"> Cancel </button>
         </form>
+      </div> -->
+
+      <!-- Update Article Modal -->
+<div class="modal fade hide" id="updateAdventureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create a New Adventure!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <form id="update-adventure-form" class="px-4 py-3 hidden form-group row" role="form">
+          <div class="form-group">
+            <label for="description">Priority</label>
+            <input  id="update-priority" required class="form-control" placeholder="Priority" name="adventure[priority]" type="number"/>
+        </div>
+            <div class="form-group">
+              <label for="size">Title</label>
+              <input  id="update-title" required class="form-control" placeholder="Title" name="adventure[title]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Place</label>
+                <input  id="update-place" required class="form-control" placeholder="Location" name="adventure[place]" type="text"/>
+        </div>
+              <div class="form-group">
+                <label for="color">Notes</label>
+                <input  id="update-location" required class="form-control" placeholder="Notes" name="adventure[notes]" type="text"/>
+        </div>
+                <div class="modal-footer">
+                  <button id="cancel-update-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Update it!</button>
+                </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div id="show-adventures-section" class="white container"> </div>
       <div id="background-image"></div>
