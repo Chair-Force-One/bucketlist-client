@@ -41,6 +41,7 @@ const onUpdateAdventure = (event) => {
   //  console.log(store.updateid)
   const updatedAdventure = {
     'adventure': {
+      'priority': data.adventure.priority,
       'title': data.adventure.title,
       'place': data.adventure.place,
       'notes': data.adventure.notes,
