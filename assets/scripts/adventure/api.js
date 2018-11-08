@@ -26,7 +26,7 @@ const showAdventures = (data) => {
 
 const updateAdventure = (updatedAdventure, id) => {
   // const updateId = store.updateid
-  // console.log(store.updateid)
+  // // console.log(store.updateid)
   return $.ajax({
     url: config.apiUrl + '/adventures/' + id,
     headers: {
