@@ -9,7 +9,6 @@ const map = require('./map.js')
 
 const onCreateAdventure = (event) => {
   event.preventDefault()
-  console.log(event)
   const data = getFormFields(event.target)
   // console.log(data)
   data.adventure.checked = false // Always create an adventure with false for checked status
@@ -20,9 +19,7 @@ const onCreateAdventure = (event) => {
 }
 
 const onClickCheckbox = (id) => {
-  console.log('Before', store.adventures[id].checked)
   store.adventures[id].checked = !store.adventures[id].checked
-  console.log('Changed', store.adventures[id].checked)
   const current = store.adventures[id]
 
   const updatedAdventure = {
@@ -35,13 +32,9 @@ const onClickCheckbox = (id) => {
     }
   }
 
-  console.log('Update', updatedAdventure)
   api.updateAdventure(updatedAdventure, id)
     .then(ui.adventureUpdateSuccess)
     .then(showAdventures)
-    .then(() => {
-      console.log('After', store.adventures[id])
-    })
     .catch(ui.adventureUpdateFailure)
 }
 

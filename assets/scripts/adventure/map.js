@@ -53,7 +53,8 @@ const dropMarker = (id, location, label) => {
   const marker = new store.googleMaps.Marker({
     position: location,
     map: store.map,
-    label: label
+    label: label,
+    animation: store.googleMaps.Animation.DROP
   })
   store.markers[id] = marker
 }
