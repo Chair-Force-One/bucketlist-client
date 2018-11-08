@@ -1,8 +1,6 @@
 BucketLi.st
 
-![Chair Force One Logo](https://cdn.shopify.com/s/files/1/2237/2693/products/Air_force-5_1024x1024@2x.png?v=1524594398
-https://cdn.shopify.com/s/files/1/2237/2693/products/Air_force-5_1024x1024@2x.png?v=1524594398
-)(https://chair-force-one.github.io/bucketlist-client/)
+![Chair Force One Logo](https://cdn.shopify.com/s/files/1/2237/2693/products/Air_force-5_1024x1024@2x.png?v=1524594398)
 
 Description:
 
