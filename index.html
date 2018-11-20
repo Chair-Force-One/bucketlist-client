@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Bucket List</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <nav class="navbar navbar-dark navbar-color fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a id="title-link" class="navbar-brand" href="#">Bucket List</a>
+          </div>
+          <span id="user-message" class="messages"> </span>
+          <div class="float-right">
+            <span id="unauthenticated-buttons">
+              <button id="show-sign-up-button" class='btn btn-danger navbar-btn float-right'> Sign Up </button>
+              <button id="show-sign-in-button" class="btn btn-danger navbar-btn navbar-btn float-right">Login</button>
+            </span>
+            <span id="authenticated-buttons">
+              <button id="show-change-password-button" class="btn navbar-btn btn-danger"> Change Password</button>
+              <button id="sign-out-button" class="btn btn-danger navbar-btn"> Sign Out </button>
+            </span>
+          </div>
+        </div>
+      </nav>
+
+      <div >
+        <br />
+        <br />
+        <br />
+      </div>
+
+      <div id="sign-in-box" class="container">
+        <form id="sign-in-form" class='form-inline'>
+          <legend> Sign In </legend>
+          <input id="sign-in-email" type="email" class="form-control"  name="credentials[email]" required placeholder="Email">
+          <input id="sign-in-pwd" name="credentials[password]"type="password" class="form-control" required placeholder="Password">
+          <button type="submit"  name="sign-in" class='btn btn-danger'> Sign In
+          </button>
+          <button id="cancel-sign-in-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+        <br />
+      </div>
+
+      <div id="sign-up-box" class="container">
+        <form id="sign-up-form" class="form-inline">
+          <legend> Create User </legend>
+          <input id="sign-up-email" name="credentials[email]" type="email" required placeholder="Email" class="form-control"/>
+          <input id="sign-up-pwd" name="credentials[password]" type="password" required placeholder="Password" class="form-control"/>
+          <input id="sign-up-pwd-conf" name="credentials[password_confirmation]" type="password" placeholder="Confirm Password" class="form-control"/>
+          <button type="submit"  name="sign-up" class='btn btn-danger'> Sign Up </button>
+          <button id="cancel-sign-up-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+        <br />
+      </div>
+
+      <div id="change-password-box" class="container">
+        <form id="change-password-form" class="form-inline">
+          <legend> Change Password </legend>
+          <input id="change-pwd-old" name="passwords[old]" type="password" required placeholder="Old Password" class="form-control"/>
+          <input id="change-pwd-new" name="passwords[new]" type="password" required placeholder="New Password" class="form-control"/>
+          <button type="submit"  name="sign-up" class='btn btn-danger'> Change </button>
+          <button id="cancel-change-password-button" class="btn btn-danger navbar-btn"> Cancel </button>
+        </form>
+        <br />
+      </div>
+
+      <div id="map" class="map container border border-danger"></div>
+
+      <div id="adventure-control-buttons" class="container">
+        <br />
+        <button id="show-create-button" class="btn btn-danger" data-toggle="modal" data-target="#createAdventureModal"> Add Item </button>
+        <br />
+      </div>
+
+      <!-- Create Article Modal -->
+      <div class="modal fade hide" id="createAdventureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create a New Adventure!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="add-adventure-form" class="px-4 py-3 hidden form-group row" role="form">
+                <div class="form-group">
+                  <label for="description">Priority</label>
+                  <input  id="create-priority" required class="form-control" placeholder="Number (ex 1)" name="adventure[priority]" type="number"/>
+              </div>
+                  <div class="form-group">
+                    <label for="size">Title</label>
+                    <input  id="create-title" required class="form-control" placeholder="Title" name="adventure[title]" type="text"/>
+              </div>
+                    <div class="form-group">
+                      <label for="color">Place</label>
+                      <input  id="create-place" required class="form-control" placeholder="ex Boston, MA" name="adventure[place]" type="text"/>
+              </div>
+                    <div class="form-group">
+                      <label for="color">Notes</label>
+                      <input  id="create-location" required class="form-control" placeholder="Notes" name="adventure[notes]" type="text"/>
+              </div>
+                      <div class="modal-footer">
+                        <button id="close-create-article" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create it!</button>
+                      </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Update Article Modal -->
+      <div class="modal fade hide" id="updateAdventureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create a New Adventure!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="update-adventure-form" class="px-4 py-3 hidden form-group row" role="form">
+                <div class="form-group">
+                  <label for="description">Priority</label>
+                  <input  id="update-priority" required class="form-control" placeholder="Number (ex 1)" name="adventure[priority]" type="number"/>
+              </div>
+                  <div class="form-group">
+                    <label for="size">Title</label>
+                    <input  id="update-title" required class="form-control" placeholder="Title" name="adventure[title]" type="text"/>
+              </div>
+                    <div class="form-group">
+                      <label for="color">Place</label>
+                      <input  id="update-place" required class="form-control" placeholder="ex Boston, MA" name="adventure[place]" type="text"/>
+              </div>
+                    <div class="form-group">
+                      <label for="color">Notes</label>
+                      <input  id="update-location" required class="form-control" placeholder="Notes" name="adventure[notes]" type="text"/>
+              </div>
+                      <div class="modal-footer">
+                        <button id="cancel-update-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update it!</button>
+                      </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="show-adventures-section" class="white container"> </div>
+      <div id="background-image"></div>
+    </body>
+</html>
